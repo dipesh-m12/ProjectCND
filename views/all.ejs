@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <div id="toast-container"></div>
   </head>
   <body>
     <h1>Total Waste Storage Facility</h1>
@@ -17,6 +18,26 @@
     </div>
   </body>
   <script>
+    function showToast(message, duration = 3000, color) {
+      const toastContainer = document.getElementById("toast-container");
+      const toast = document.createElement("div");
+
+      toast.className = "toast";
+      toast.innerHTML = message;
+      toast.style.background = color;
+
+      toastContainer.appendChild(toast);
+      setTimeout(() => {
+        toast.classList.add("show");
+        setTimeout(() => {
+          toast.classList.remove("show");
+          setTimeout(() => {
+            toast.remove();
+          }, 500);
+        }, duration);
+      }, 100);
+    }
+
     let classNames = [
       "background-color: green",
       "background-color: grey",
@@ -60,7 +81,7 @@
           }
           if (i == type.length - 1) {
             infoElement = document.createElement("span");
-            infoElement.textContent = `TOTAL WASTE = ${totalCount}`;
+            infoElement.textContent = `TOTAL BLOCKS = ${totalCount}`;
             document.querySelector(".info").appendChild(infoElement);
 
             statusElement = document.createElement("span");
@@ -76,11 +97,14 @@
         })
         .catch((error) => console.error(error));
     }
+    showToast("Exceeded Limit for waste Storage!",5000,"linear-gradient(45deg, #FF5733, #FF0000)")
+    showToast("More than 60% filled! Action Required",7000,"linear-gradient(45deg, #FF5733, #FF0000)")
   </script>
   <style>
-    body {
-      background-color: antiquewhite;
+    html {
+      overflow-y: hidden;
     }
+
     h1 {
       text-align: center;
       background-color: black;
@@ -96,6 +120,7 @@
       align-items: center;
       height: 80vh;
       margin: 0;
+      background-color: antiquewhite;
     }
 
     .container {
@@ -110,6 +135,22 @@
       overflow: auto;
       background-color: aliceblue;
     }
+
+    .container::-webkit-scrollbar {
+      width: 2px;
+    }
+
+    .container::-webkit-scrollbar-track {
+      width: 9px;
+      height: 5px;
+      box-shadow: inset 1px 1px 1px #ffffff;
+    }
+
+    .container::-webkit-scrollbar-thumb {
+      background: linear-gradient(45deg, #222222, 40%, #888888);
+      border-radius: 0.2rem;
+    }
+
     .container p {
       display: flex;
 
@@ -165,6 +206,34 @@
     .button {
       display: flex;
       justify-content: center;
+    }
+    #toast-container {
+      position: fixed;
+      bottom: 20px;
+      left: 0%;
+      z-index: 1000;
+    }
+
+    .toast {
+      width: fit-content;
+      display: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      background: #08ff2d;
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: bold;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+      margin-bottom: 10px;
+      opacity: 0;
+      transform: translateX(-10rem);
+      z-index: 4000;
+    }
+
+    .toast.show {
+      display: block;
+      opacity: 1;
+      transform: translateX(0rem);
     }
   </style>
 </html>

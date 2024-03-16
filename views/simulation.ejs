@@ -84,7 +84,7 @@
             position: absolute;
             top: 1vh;
             right: 3vw;
-            scale: 0.4;
+            scale: 0.8;
             box-shadow: 5px 5px 10px hsla(60, 6%, 19%, 0.772),
                 10px 10px 10px hsla(60, 6%, 19%, 0.772);
             border-radius: 4rem;
@@ -94,7 +94,7 @@
         }
 
         .colorScheme:hover {
-            scale: 0.5;
+            scale: 0.9;
         }
 
         circle.waste {
@@ -299,9 +299,9 @@ addWasteFromArray(random_waste);
             }
         }
 
-        const animation_time = 3000; //3 seconds
+        const animation_time = 1000; //3 seconds --- 1seconds
         const top_animation_time = range.map((d) => {               //upto 300s
-            return Math.floor(Math.random() * 100 * animation_time);
+            return Math.floor(Math.random() * 60 * animation_time);
         }); 
         console.log("Delay at top: ",top_animation_time);
 
@@ -447,31 +447,31 @@ addWasteFromArray(random_waste);
 
 
 
-        const twov2 = svg
-            .append("circle")
-            .attr("cx", 0.56 * window.innerWidth)
-            .attr("cy", 0.5 * window.innerHeight)
-            .attr("r", 10)
-            .attr("fill", "red")
+        // const twov2 = svg
+        //     .append("circle")
+        //     .attr("cx", 0.56 * window.innerWidth)
+        //     .attr("cy", 0.5 * window.innerHeight)
+        //     .attr("r", 10)
+        //     .attr("fill", "red")
 
-        const twov1 = svg
-            .append("circle")
-            .attr("cx", 0.44 * window.innerWidth)
-            .attr("cy", 0.5 * window.innerHeight)
-            .attr("r", 10)
-            .attr("fill", "red");
-        const lv1 = svg
-            .append("circle")
-            .attr("cx", 0.44 * window.innerWidth)
-            .attr("cy", 10)
-            .attr("r", 10)
-            .attr("fill", "red");
-        const lvtwo = svg
-            .append("circle")
-            .attr("cx", 0.56 * window.innerWidth)
-            .attr("cy",10)
-            .attr("r", 10)
-            .attr("fill", "red");
+        // const twov1 = svg
+        //     .append("circle")
+        //     .attr("cx", 0.44 * window.innerWidth)
+        //     .attr("cy", 0.5 * window.innerHeight)
+        //     .attr("r", 10)
+        //     .attr("fill", "red");
+        // const lv1 = svg
+        //     .append("circle")
+        //     .attr("cx", 0.44 * window.innerWidth)
+        //     .attr("cy", 10)
+        //     .attr("r", 10)
+        //     .attr("fill", "red");
+        // const lvtwo = svg
+        //     .append("circle")
+        //     .attr("cx", 0.56 * window.innerWidth)
+        //     .attr("cy",10)
+        //     .attr("r", 10)
+        //     .attr("fill", "red");
 
             const entrance = svg                 //required
                 .append("rect")
